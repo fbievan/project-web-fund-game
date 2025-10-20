@@ -3,13 +3,39 @@
     <title>Hang Game</title>
     <meta name="description" content="Our first page">
     <meta name="keywords" content="html tutorial template">
+    <style>
+    .container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: dodgerblue;
+    padding: 10px;
+    }
+    .container div.fill {
+        visibility: hidden; 
+    }
+    .container div {
+    background-color: #f1f1f1;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+</style>
+
 </head>
+
 <body>
-    <img src="filler_head.jpg" alt="Head">
-    <img src="filler_torso.jpg" alt="Torso">
-    <img src="filler_leg1.jpg" alt="Leg 1">
-    <img src="filler_leg2.jpg" alt="Leg 2">
-    <img src="filler_arm1.jpg" alt="Arm 1">
-    <img src="filler_arm2.jpg" alt="Arm 2">
+    <div class="container">
+        <div class="fill">fill</div>
+        <img src="filler_head.jpg" alt="Head">
+        <div class="fill">fill</div>
+        <img src="filler_arm1.jpg" alt="Arm 1"> 
+        <img src="filler_torso.jpg" alt="Torso">
+        <img src="filler_arm2.jpg" alt="Arm 2"> 
+        <div class = "fill">fill</div>
+    <div><img src="filler_leg1.jpg" alt="Leg 1"> 
+    <img src="filler_leg2.jpg" alt="Leg 2"> 
+    </div>
+    <div class="fill"></div>
 </body>
 </html>
