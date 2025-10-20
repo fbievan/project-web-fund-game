@@ -41,12 +41,12 @@
     .figure{ position:absolute; left:232px; top:66px; width:100px; height:260px }
     .figure div{ position:absolute }
     /* Hidden by default; reveal by adding .show */
-    .figure .head{ left:0; top:0; width:56px; height:56px; border-radius:50%; border:4px solid #111; background:transparent;  }
-    .figure .body{ left:26px; top:56px; width:4px; height:92px; background:#111;  }
-    .figure .arm.left{ left:-10px; top:76px; width:40px; height:6px; background:#111; transform:rotate(0deg); transform-origin:right center;  }
-    .figure .arm.right{ left:25px; top:76px; width:40px; height:6px; background:#111; transform:rotate(0deg);  }
-    .figure .leg.left{ left:-22px; top:175px; width:60px; height:6px; background:#111; transform:rotate(-30deg); transform-origin:left center; }
-    .figure .leg.right{ left:20px; top:160px; width:60px; height:6px; background:#111; transform:rotate(30deg);  }
+    .figure .head{ left:0; top:0; width:56px; height:56px; border-radius:50%; border:4px solid #111; background:transparent; display: none;  }
+    .figure .body{ left:26px; top:56px; width:4px; height:92px; background:#111; display: none;}
+    .figure .arm.left{ left:-10px; top:76px; width:40px; height:6px; background:#111; transform:rotate(0deg); transform-origin:right center; display: none; }
+    .figure .arm.right{ left:25px; top:76px; width:40px; height:6px; background:#111; transform:rotate(0deg); display: none; }
+    .figure .leg.left{ left:-22px; top:175px; width:60px; height:6px; background:#111; transform:rotate(-30deg); transform-origin:left center; display: none; }
+    .figure .leg.right{ left:20px; top:160px; width:60px; height:6px; background:#111; transform:rotate(30deg); display: none;}
 
     /* Utility class to reveal parts */
     .show{ display:block }
