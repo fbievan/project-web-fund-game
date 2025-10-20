@@ -1,41 +1,57 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Hang Game</title>
-    <meta name="description" content="Our first page">
-    <meta name="keywords" content="html tutorial template">
-    <style>
-    .container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    background-color: dodgerblue;
-    padding: 10px;
-    }
-    .container div.fill {
-        visibility: hidden; 
-    }
-    .container div {
-    background-color: #f1f1f1;
-    border: 1px solid black;
-    padding: 10px;
-    font-size: 30px;
-    text-align: center;
-}
-</style>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hangman Game</title>
+    <meta name="description" content="Hangman Game">
+    <link rel="stylesheet" href="index.css">
 </head>
-
 <body>
     <div class="container">
-        <div class="fill">fill</div>
-        <img src="filler_head.jpg" alt="Head">
-        <div class="fill">fill</div>
-        <img src="filler_arm1.jpg" alt="Arm 1"> 
-        <img src="filler_torso.jpg" alt="Torso">
-        <img src="filler_arm2.jpg" alt="Arm 2"> 
-        <div class = "fill">fill</div>
-    <div><img src="filler_leg1.jpg" alt="Leg 1"> 
-    <img src="filler_leg2.jpg" alt="Leg 2"> 
+        <!-- Left: Gallows + figure -->
+        <section class="gallows" aria-label="Gallow">
+            <div class="base" aria-hidden="true"></div>
+            <div class="pole" aria-hidden="true"></div>
+            <div class="beam" aria-hidden="true"></div>
+            <div class="rope" aria-hidden="true"></div>
+
+            <div class="figure" id="figure">
+                <div class="head" id="head" aria-hidden="true"></div>
+                <div class="body" id="body" aria-hidden="true"></div>
+                <div class="arm left" id="arm-left" aria-hidden="true"></div>
+                <div class="arm right" id="arm-right" aria-hidden="true"></div>
+                <div class="leg left" id="leg-left" aria-hidden="true"></div>
+                <div class="leg right" id="leg-right" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <!-- Right: Controls -->
+        <aside class="game-panel" aria-label="Game controls">
+            <h1>Hangman</h1>
+            <p>Guess the word by selecting letters.</p>
+
+            <div class="word-display" id="wordDisplay" aria-live="polite">
+                <!-- Example placeholders; JS can populate these -->
+                <span class="letter">_</span>
+                <span class="letter">_</span>
+                <span class="letter">_</span>
+                <span class="letter">_</span>
+                <span class="letter">_</span>
+            </div>
+
+            <div class="keyboard" id="keyboard" role="application" aria-label="Letter buttons">
+                <!-- Buttons generated in HTML for layout; JS can wire behavior -->
+                <button>A</button><button>B</button><button>C</button><button>D</button>
+                <button>E</button><button>F</button><button>G</button><button>H</button>
+                <button>I</button><button>J</button><button>K</button><button>L</button>
+                <button>M</button><button>N</button><button>O</button><button>P</button>
+                <button>Q</button><button>R</button><button>S</button><button>T</button>
+                <button>U</button><button>V</button><button>W</button><button>X</button>
+                <button>Y</button><button>Z</button>
+            </div>
+        </aside>
     </div>
-    <div class="fill"></div>
+
 </body>
 </html>
