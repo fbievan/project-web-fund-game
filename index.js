@@ -20,12 +20,20 @@ function checkAgainstWord(char, word) {
     return word.toLowerCase().includes(char);
 }
 
+function setHTMLletters (mainword) {
+    const collection = document.getElementsByClassName("letter"); 
+    for (let x = 0; x < collection.length; ) {
+        collection[x].innerHTML = mainword[x];
+        x++; 
+    }
+}
 
 // Start of everything
 getword().then(function(word) {
     mainword = word;
     console.log(checkAgainstWord('t', mainword));
     console.log(mainword);
+    setHTMLletters(mainword);
     return mainword
 });
 
