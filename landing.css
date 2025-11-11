@@ -1,0 +1,38 @@
+body{
+    width: 50%;
+    height: 50%;
+    background-color:#e9f0f8;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    width:50%;
+    text-align: center;
+    border: thick solid black;
+    padding: 20px 20px 20px 20px;
+}
+#LinkMenu{
+    position:absolute;
+    background-color: bisque;
+    border: thick solid black;
+    width:50%;
+    font-size: large;
+    position:relative;
+    left:25%
+}
+#LinkMenu::after{
+    
+    
+    left:50%;
+    bottom:0;
+}
+ol{
+    display:flex;
+    list-style-type: none;
+    justify-content: center;
+    padding:0;
+    margin:0;
+
+}
+ol li a{
+    padding:10px;
+    
+}
