@@ -37,9 +37,25 @@ function setHTMLletters (char, mainword) {
 // FIX LATER
 function displayCharacter(attemptsLeft) {
     const elements = document.getElementsByClassName('figure');
-    // 'elements' is now an HTMLCollection, which is array-like.
-    // You can iterate over it using a for loop or convert it to an array.
     console.log(elements)
+}
+function handleInput(key, attempts, mainword) {
+            console.log('Button pressed:', key);
+            console.log('Button text:', key);
+            if (checkAgainstWord(key.toLowerCase(), mainword)) {
+                console.log('The letter', key, 'is in the word!')
+                setHTMLletters(key.toLowerCase(), mainword);
+                return attempts;
+            } else {
+                attempts = attempts + 1
+                console.log("lose one life", attempts);
+                if (attempts == 6) {
+                    console.log("Game Over");
+                    return attempts;
+          }
+          return attempts;
+            } 
+
 }
 
 // Start of everything
@@ -52,23 +68,11 @@ getword().then(function(word) {
     document.addEventListener('click', function(event) {
         if (attemptlimit < 6 ) {
             if (event.target.tagName === 'BUTTON' || event.target.closest('BUTTON')) {
-           const clickedButton = event.target.closest('BUTTON');
-            console.log('Button pressed:', clickedButton);
-            console.log('Button text:', clickedButton.textContent);
-            if (checkAgainstWord(clickedButton.textContent.toLowerCase(), mainword)) {
-                console.log('The letter', clickedButton.textContent, 'is in the word!')
-                setHTMLletters(clickedButton.textContent.toLowerCase(), mainword);
-            } else {
-                attemptlimit = attemptlimit + 1
-                console.log("lose one life", attemptlimit);
-                displayCharacter(attemptlimit);
-                if (attemptlimit == 6) {
-                    console.log("Game Over");
-          }
-            } 
-
+                const clickedButton = event.target.closest('BUTTON');
+                attemptlimit = handleInput(clickedButton.textContent, attemptlimit, mainword);
+                console.log(attemptlimit)
+            }
         }
-    }
     });
 });
 
