@@ -34,11 +34,14 @@ function setHTMLletters (char, mainword) {
 }
 
 // Function to display character based on attempts left 
-// FIX LATER
-function displayCharacter(attemptsLeft) {
-    const elements = document.getElementsByClassName('figure');
-    console.log(elements)
+function displayCharacter(attempts) {
+    const elements = document.getElementById('figure');
+    child = elements.children[attempts - 1];
+    console.log(elements.children[attempts - 1]);
+    child.setAttribute('style', 'display: inline;');
 }
+
+// Handles any input
 function handleInput(key, attempts, mainword) {
             console.log('Button pressed:', key);
             console.log('Button text:', key);
@@ -49,12 +52,14 @@ function handleInput(key, attempts, mainword) {
             } else {
                 attempts = attempts + 1
                 console.log("lose one life", attempts);
+                displayCharacter(attempts);
                 if (attempts == 6) {
                     console.log("Game Over");
+                    alert("Game Over! The word was: " + mainword);
                     return attempts;
           }
-          return attempts;
-            } 
+             return attempts;
+        } 
 
 }
 
@@ -74,5 +79,12 @@ getword().then(function(word) {
             }
         }
     });
+document.addEventListener("keydown", (event) => {
+    const keyName = event.key;
+    const keyCode = event.keyCode; 
+
+    console.log(`Key pressed: ${keyName}, Key Code: ${keyCode}`);
+    attemptlimit = handleInput(keyName, attemptlimit, mainword);
+});
 });
 
