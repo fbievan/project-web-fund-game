@@ -42,6 +42,9 @@ function displayCharacter(attempts) {
 
 // Handles any input
 function handleInput(key, attempts, mainword) {
+            if (attempts >= 6) {
+                return attempts;
+            }
             if (checkAgainstWord(key.toLowerCase(), mainword)) {
                 console.log('The letter', key, 'is in the word!')
                 setHTMLletters(key.toLowerCase(), mainword);
@@ -65,12 +68,10 @@ getword().then(function(word) {
     attemptlimit = 0
     // Button input
     document.addEventListener('click', function(event) {
-        if (attemptlimit < 6 ) {
             if (event.target.tagName === 'BUTTON' || event.target.closest('BUTTON')) {
                 const clickedButton = event.target.closest('BUTTON');
                 attemptlimit = handleInput(clickedButton.textContent, attemptlimit, mainword);
                 console.log(attemptlimit)
-            }
         }
     });
     // Key input    
