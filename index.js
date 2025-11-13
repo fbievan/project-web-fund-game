@@ -11,8 +11,7 @@ function getword () {
             // Fix error that was happening sometimes (not 5 letters)
             if (randomWord.length != 5) {
                 console.log('Retrying for 5 Letter')
-                console.log(randomWord);
-                return getword(); // Retry if not 5 letters
+                return getword(); // Retry if not 5 letters (will fetch json again but works fine)
             }
             return randomWord;
         });
@@ -71,14 +70,13 @@ getword().then(function(word) {
             if (event.target.tagName === 'BUTTON' || event.target.closest('BUTTON')) {
                 const clickedButton = event.target.closest('BUTTON');
                 attemptlimit = handleInput(clickedButton.textContent, attemptlimit, mainword);
-                console.log(attemptlimit)
+           //     console.log(attemptlimit)
         }
     });
     // Key input    
     document.addEventListener("keydown", (event) => {
-        const keyName = event.key;
-        const keyCode = event.keyCode; 
-        console.log(`Key pressed: ${keyName}, Key Code: ${keyCode}`);
+        const keyName = event.key;; 
+        // console.log(`Key pressed: ${keyName}`);
         attemptlimit = handleInput(keyName, attemptlimit, mainword);
     });
 });
