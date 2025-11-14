@@ -49,7 +49,7 @@ function hideChar(char) {
             break;
         }
     }
-    element.setAttribute('style', 'display: none;');
+    element.setAttribute('style', 'visibility: hidden;');
 }
 
 // Handles any input
