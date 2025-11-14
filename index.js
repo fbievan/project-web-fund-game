@@ -38,6 +38,19 @@ function displayCharacter(attempts) {
     console.log(elements.children[attempts - 1]);
     child.setAttribute('style', 'display: inline;');
 }
+// Function to hide character
+function hideChar(char) {
+    const buttons = document.getElementsByTagName('button');
+    console.log(buttons)
+    for ( x in buttons ) {
+        if (buttons[x].innerHTML.includes(char.toUpperCase())) {
+            var element = buttons[x];
+            console.log(element)
+            break;
+        }
+    }
+    element.setAttribute('style', 'display: none;');
+}
 
 // Handles any input
 function handleInput(key, attempts, mainword) {
@@ -46,12 +59,14 @@ function handleInput(key, attempts, mainword) {
             }
             if (checkAgainstWord(key.toLowerCase(), mainword)) {
                 console.log('The letter', key, 'is in the word!')
+                hideChar(key);
                 setHTMLletters(key.toLowerCase(), mainword);
                 return attempts;
             } else {
                 attempts = attempts + 1
                 console.log("lose one life", attempts);
                 displayCharacter(attempts);
+                hideChar(key);
                 if (attempts == 6) {
                     console.log("Game Over");
                     alert("Game Over! The word was: " + mainword);
@@ -75,7 +90,7 @@ getword().then(function(word) {
     });
     // Key input    
     document.addEventListener("keydown", (event) => {
-        const keyName = event.key;; 
+        const keyName = event.key;
         // console.log(`Key pressed: ${keyName}`);
         attemptlimit = handleInput(keyName, attemptlimit, mainword);
     });
