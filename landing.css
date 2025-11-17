@@ -4,10 +4,14 @@ body{
     background-color:#e9f0f8;
     font-family: 'Times New Roman', Times, serif;
     display: flex;
+    position:relative;
+    left:25%;
+    top: 120px;
     width:50%;
     text-align: center;
     border: thick solid black;
     padding: 20px 20px 20px 20px;
+    color: black;
 }
 #LinkMenu{
     position:absolute;
@@ -16,13 +20,25 @@ body{
     width:50%;
     font-size: large;
     position:relative;
-    left:25%
+    left:25%;
+
+}
+a{
+    color:black;
 }
 #LinkMenu::after{
     
     
     left:50%;
     bottom:0;
+}
+#TeamMembers{
+    position: relative;
+    list-style-type: none;
+    right: 13px;
+}
+#Rules{
+    list-style-type: none;
 }
 ol{
     display:flex;
