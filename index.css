@@ -60,7 +60,37 @@
     .keyboard{ display:grid; grid-template-columns: repeat(13,1fr); gap:8px }
     .keyboard button{ padding:10px 6px; border-radius:6px; background:#f7f7f7; border:1px solid #d0d0d0; cursor:pointer; font-weight:700 }
     .keyboard button:disabled{ opacity:0.45; cursor:not-allowed }
+#LinkMenu{
+    position:absolute;
+    background-color: bisque;
+    border: thick solid black;
+    width:50%;
+    font-size: large;
+    position:relative;
+    left:25%;
 
+}
+a{
+    color:black;
+}
+#LinkMenu::after{
+    
+    
+    left:50%;
+    bottom:0;
+}
+ol{
+    display:flex;
+    list-style-type: none;
+    justify-content: center;
+    padding:0;
+    margin:0;
+
+}
+ol li a{
+    padding:10px;
+    
+}
     /* Responsive */
     @media (max-width:760px){
         .container{ grid-template-columns:1fr; }
