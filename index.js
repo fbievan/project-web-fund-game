@@ -1,7 +1,7 @@
-
 // Get a random word from the JSON file
 function getword () {
-    const json = '{"words":["arbys","count","tart","sweet","pulse"]}'
+    const jsond = '{"words":["arbys","count","tart","sweet","pulse"]}'
+    const json = JSON.parse(jsond)
     const jsonArray = json.words; // Make json into array
     const randomIndex = Math.floor(Math.random() * jsonArray.length); // Get a random index
     const randomWord = jsonArray[randomIndex]; // Get the random word
@@ -19,17 +19,17 @@ function checkAgainstWord(char, word) {
 }
 
 function setHTMLletters (char, mainword, correctletters) {
-    const collection = document.getElementsByClassName("letter"); 
+    const collection = document.getElementsByClassName("letter");
     for (let x = 0; x < mainword.length; ) {
         if (char == mainword[x]) {
             collection[x].innerHTML = mainword[x];
-        } 
+        }
         x++;
     }
     return correctletters;
 }
 
-// Function to display character based on attempts left 
+// Function to display character based on attempts left
 function displayCharacter(attempts) {
     const elements = document.getElementById('figure');
     child = elements.children[attempts - 1];
@@ -52,11 +52,11 @@ function hideChar(char) {
 
 // Sets the number of correct letters
 function setCorrectLetters(correctletters, mainword) {
-        const collection = document.getElementsByClassName("letter"); 
+        const collection = document.getElementsByClassName("letter");
         for (let x = 0; x < mainword.length; ) {
                 if (collection[x].innerHTML == mainword[x]) {
                     correctletters = correctletters + 1;
-                } 
+                }
                 x++;
             }
     return correctletters;
@@ -68,7 +68,7 @@ function handleInput(key, attempts, mainword) {
                 return attempts;
             }
             if (checkAgainstWord(key.toLowerCase(), mainword)) {
-                correctletters = 0 
+                correctletters = 0
                 console.log('The letter', key, 'is in the word!')
                 hideChar(key);
                 setHTMLletters(key.toLowerCase(), mainword);
@@ -92,29 +92,27 @@ function handleInput(key, attempts, mainword) {
                     return attempts;
           }
              return attempts;
-        } 
+        }
 }
 
 // Start of everything
-getword().then(function(word) {
-    mainword = word;
-    attemptlimit = 0
-    correctletters = 0
-    console.log(word)
-    // Button input
-    document.addEventListener('click', function(event) {
-            if (event.target.tagName === 'BUTTON' || event.target.closest('BUTTON')) {
-                const clickedButton = event.target.closest('BUTTON');
-                attemptlimit, correctletters = handleInput(clickedButton.textContent, attemptlimit, mainword, correctletters);
-                // console.log(correctletters)
-           //     console.log(attemptlimit)
-        }
-    });
-    // Key input    
-    document.addEventListener("keydown", (event) => {
-        const keyName = event.key;
-        // console.log(`Key pressed: ${keyName}`);
-        attemptlimit = handleInput(keyName, attemptlimit, mainword, correctletters);
-    });
-});
-
+   word = getword()
+   mainword = word;
+   attemptlimit = 0
+   correctletters = 0
+   console.log(word)
+   // Button input
+   document.addEventListener('click', function(event) {
+           if (event.target.tagName === 'BUTTON' || event.target.closest('BUTTON')) {
+               const clickedButton = event.target.closest('BUTTON');
+               attemptlimit, correctletters = handleInput(clickedButton.textContent, attemptlimit, mainword, correctletters);
+               // console.log(correctletters)
+          //     console.log(attemptlimit)
+       }
+   });
+   // Key input
+   document.addEventListener("keydown", (event) => {
+       const keyName = event.key;
+       // console.log(`Key pressed: ${keyName}`);
+       attemptlimit = handleInput(keyName, attemptlimit, mainword, correctletters);
+   });
