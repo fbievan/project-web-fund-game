@@ -109,7 +109,7 @@ getword().then(function(word) {
     document.addEventListener('click', function(event) {
             if (event.target.tagName === 'BUTTON' || event.target.closest('BUTTON')) {
                 const clickedButton = event.target.closest('BUTTON');
-                attemptlimit, correctletters = handleInput(clickedButton.textContent, attemptlimit, mainword, correctletters);
+                attemptlimit = handleInput(clickedButton.textContent, attemptlimit, mainword, correctletters);
                 // console.log(correctletters)
            //     console.log(attemptlimit)
         }
