@@ -22,13 +22,15 @@ function checkAgainstWord(char, word) {
     return word.toLowerCase().includes(char);
 }
 
-function setHTMLletters (char, mainword) {
+function setHTMLletters (char, mainword, correctletters) {
     const collection = document.getElementsByClassName("letter"); 
     for (let x = 0; x < mainword.length; ) {
         if (char == mainword[x]) {
-            collection[x].innerHTML = mainword[x];        } 
-        x++; 
+            collection[x].innerHTML = mainword[x];
+        } 
+        x++;
     }
+    return correctletters;
 }
 
 // Function to display character based on attempts left 
@@ -52,15 +54,36 @@ function hideChar(char) {
     element.setAttribute('style', 'visibility: hidden;');
 }
 
+// Sets the number of correct letters
+function setCorrectLetters(correctletters, mainword) {
+        const collection = document.getElementsByClassName("letter"); 
+        for (let x = 0; x < mainword.length; ) {
+                if (collection[x].innerHTML == mainword[x]) {
+                    correctletters = correctletters + 1;
+                } 
+                x++;
+            }
+    return correctletters;
+}
+
 // Handles any input
 function handleInput(key, attempts, mainword) {
             if (attempts >= 6) {
                 return attempts;
             }
             if (checkAgainstWord(key.toLowerCase(), mainword)) {
+                correctletters = 0 
                 console.log('The letter', key, 'is in the word!')
                 hideChar(key);
                 setHTMLletters(key.toLowerCase(), mainword);
+                correctletters = setCorrectLetters(correctletters, mainword);
+                if (correctletters == 5) {
+                    console.log("You Win!");
+                    alert("Congratulations! You've guessed the word: " + mainword);
+                    return attempts = 6; // End game
+                }
+
+                console.log("Correct Letters:", correctletters);
                 return attempts;
             } else {
                 attempts = attempts + 1
@@ -80,11 +103,14 @@ function handleInput(key, attempts, mainword) {
 getword().then(function(word) {
     mainword = word;
     attemptlimit = 0
+    correctletters = 0
+    console.log(word)
     // Button input
     document.addEventListener('click', function(event) {
             if (event.target.tagName === 'BUTTON' || event.target.closest('BUTTON')) {
                 const clickedButton = event.target.closest('BUTTON');
-                attemptlimit = handleInput(clickedButton.textContent, attemptlimit, mainword);
+                attemptlimit, correctletters = handleInput(clickedButton.textContent, attemptlimit, mainword, correctletters);
+                // console.log(correctletters)
            //     console.log(attemptlimit)
         }
     });
@@ -92,7 +118,7 @@ getword().then(function(word) {
     document.addEventListener("keydown", (event) => {
         const keyName = event.key;
         // console.log(`Key pressed: ${keyName}`);
-        attemptlimit = handleInput(keyName, attemptlimit, mainword);
+        attemptlimit = handleInput(keyName, attemptlimit, mainword, correctletters);
     });
 });
 
