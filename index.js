@@ -2,7 +2,7 @@
 // Get a random word from the JSON file
 function getword () {
     // Return the promise so callers can receive the random word
-    return fetch('/words.json', { method: 'GET' })
+    return fetch('/words2.json', { method: 'GET' })
         .then(function(response) { return response.json(); })
         .then(function(json) {
             const jsonArray = json.words; // Make json into array
